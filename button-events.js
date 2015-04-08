@@ -58,10 +58,9 @@
    * @param {string} btn
    */
   function emit (eventName, btn) {
-    var customEvent = new CustomEvent(eventName, {
-      detail: btn
-    });
+    var customEvent = doc.createEvent('CustomEvent');
 
+    customEvent.initCustomEvent(eventName, true, true, btn);
     doc.dispatchEvent(customEvent);
   }
 
