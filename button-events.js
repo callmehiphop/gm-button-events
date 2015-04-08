@@ -59,7 +59,7 @@
    */
   function emit (eventName, btn) {
     var customEvent = new CustomEvent(eventName, {
-      buttonName: btn
+      detail: btn
     });
 
     doc.dispatchEvent(customEvent);
@@ -70,6 +70,7 @@
    * @see gm.info.watchButtons
    */
   info.watchButtons(function (btns) {
+    btns = btns || [];
     diff(btns, active).forEach(press);
     diff(active, btns).forEach(release);
   }, function () {
